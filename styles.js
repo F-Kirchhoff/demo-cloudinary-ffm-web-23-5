@@ -1,3 +1,6 @@
+import { createGlobalStyle } from "styled-components";
+
+export default createGlobalStyle`
 :root {
   --max-width: 1100px;
   --border-radius: 12px;
@@ -86,6 +89,7 @@ body {
 }
 
 body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
       to bottom,
@@ -105,3 +109,5 @@ a {
     color-scheme: dark;
   }
 }
+
+`;

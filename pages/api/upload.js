@@ -1,6 +1,5 @@
 import process from "node:process";
-
-import cloudinary from "cloudinary";
+import { v2 as cloudinary } from "cloudinary";
 import formidable from "formidable";
 
 export const config = {
@@ -20,8 +19,8 @@ export default async function handler(request, response) {
     const form = formidable({});
     const [, files] = await form.parse(request);
     const { filepath, newFilename } = files.file[0];
-    // See cloudinary docs for more options: https://cloudinary.com/documentation/node_integration
-    const result = await cloudinary.v2.uploader.upload(filepath, {
+
+    const result = await cloudinary.uploader.upload(filepath, {
       public_id: newFilename,
     });
     console.log("API: response from cloudinary: ", result);
