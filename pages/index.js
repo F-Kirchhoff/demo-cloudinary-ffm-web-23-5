@@ -4,6 +4,12 @@ import React, { useState } from "react";
 import styled from "styled-components";
 
 export default function Page() {
+  // image Schema
+  // {
+  //   url: string,
+  //   height: Number,
+  //   width: Number
+  // }
   const [image, setImage] = useState(null);
   const [error, setError] = useState(null);
 
@@ -11,19 +17,7 @@ export default function Page() {
     event.preventDefault();
     const formData = new FormData(event.target);
 
-    try {
-      const response = await fetch("/api/upload", {
-        method: "post",
-        body: formData,
-      });
-      const img = await response.json();
-
-      console.log("Browser: response from API: ", img);
-
-      setImage(img);
-    } catch (error) {
-      setError(error);
-    }
+    console.log(formData);
   }
 
   return (
