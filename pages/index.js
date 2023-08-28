@@ -18,6 +18,22 @@ export default function Page() {
     const formData = new FormData(event.target);
 
     console.log(formData);
+
+    const response = await fetch("/api/upload", {
+      method: "POST",
+      body: formData,
+    });
+
+    if (response.ok) {
+      const { height, width, url } = await response.json();
+
+      const newImage = {
+        height,
+        width,
+        url,
+      };
+      setImage(newImage);
+    }
   }
 
   return (
